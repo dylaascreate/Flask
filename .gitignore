@@ -1,0 +1,39 @@
+# --- Python ---
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Virtual Environments ---
+# Common names for virtual envs
+venv/
+env/
+.venv/
+.env/
+
+# --- Flask & Web ---
+# Flask instance folder (often used for instance-specific configs)
+instance/
+# Webassets cache (if using Flask-Assets)
+.webassets-cache
+
+# --- Environment Variables & Secrets (CRITICAL) ---
+# Never commit your API keys or secret keys!
+.env
+.flaskenv
+
+# --- Databases ---
+# Ignore local SQLite databases so you don't overwrite production data
+*.sqlite3
+*.db
+
+# --- Logs ---
+*.log
+
+# --- OS & Editor Garbage ---
+# macOS
+.DS_Store
+# VS Code
+.vscode/
+# PyCharm
+.idea/
