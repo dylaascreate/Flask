@@ -1,2 +1,8 @@
-flask
+Flask
 python-dotenv
+requests
+scikit-learn
+pandas
+psycopg2-binary
+Flask-SQLAlchemy
+psutil

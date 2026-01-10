@@ -1,0 +1,502 @@
+[
+  {
+    "title": "Home / Landing Page",
+    "url": "http://localhost:8000/",
+    "content": "The main entry point for DevNexus. Provides an overview of AI-driven roadmaps, student success stories, and quick access to login or registration."
+  },
+  {
+    "title": "Login Page",
+    "url": "http://localhost:8000/login",
+    "content": "Secure authentication portal for students and administrators. Supports email/password login and password recovery options."
+  },
+  {
+    "title": "Registration Page",
+    "url": "http://localhost:8000/register",
+    "content": "Sign-up page for new users. Requires student ID, email, and password to create a DevNexus account."
+  },
+  {
+    "title": "Student Dashboard",
+    "url": "http://localhost:8000/student/dashboard",
+    "content": "The central command center. Users can view their active progress, access 'My Roadmaps', and see quick stats about their learning velocity."
+  },
+  {
+    "title": "Roadmap Generator Tool",
+    "url": "http://localhost:8000/student/generate",
+    "content": "The core tool for creating new learning paths. Supports two modes: 'General' for career-based skill gaps and 'Academic' for university course alignment."
+  },
+  {
+    "title": "My Roadmaps Library",
+    "url": "http://localhost:8000/student/roadmaps",
+    "content": "A repository of all roadmaps the student has generated. Shows completion percentage and allows resuming specific paths."
+  },
+  {
+    "title": "User Profile & Skill Matrix",
+    "url": "http://localhost:8000/student/profile",
+    "content": "Displays the user's 'Skill Matrix' (visual bars of skill levels), bio, and role. Includes an 'Edit' button to update personal details."
+  },
+  {
+    "title": "Profile Settings",
+    "url": "http://localhost:8000/student/profile/settings",
+    "content": "Configuration area to change display name, target career role, update passwords, and manage account security."
+  },
+  {
+    "title": "System Protocols (Terms of Service)",
+    "url": "http://localhost:8000/system-protocols",
+    "content": "Legal terms covering Access Control, Data Integrity, and System Stability. Users must acknowledge these protocols to use the system."
+  },
+  {
+    "title": "Intellectual Property & Copyright",
+    "url": "http://localhost:8000/copyright",
+    "content": "Details ownership of the DevNexus source code, user-generated data rights, and third-party asset licenses."
+  },
+  {
+    "title": "AI Assistant Help",
+    "url": "http://localhost:8000/help/ai-assistant",
+    "content": "Guide on how to use the floating AI chatbot to navigate the website and ask questions about courses."
+  },
+  {
+    "title": "Course: Probability & Stats (DEK3023)",
+    "url": "http://localhost:8000/course/DEK3023",
+    "content": "Syllabus for DEK3023. Covers Hypothesis Testing, Linear Regression, SPSS, and Probability Modeling."
+  },
+  {
+    "title": "Course: Numerical Methods (DEK3033)",
+    "url": "http://localhost:8000/course/DEK3033",
+    "content": "Syllabus for DEK3033. Covers Root-Finding Algorithms, Linear Algebra Solvers, and MATLAB computing."
+  },
+  {
+    "title": "Course: Courseware Design (DEP3013)",
+    "url": "http://localhost:8000/course/DEP3013",
+    "content": "Syllabus for DEP3013. Covers Instructional Design Models (ADDIE), UI/UX Storyboarding, and Figma prototyping."
+  },
+  {
+    "title": "Course: Models of Instruction (DEP3023)",
+    "url": "http://localhost:8000/course/DEP3023",
+    "content": "Syllabus for DEP3023. Focuses on Blended Learning, Flipped Classrooms, and Curriculum Analysis."
+  },
+  {
+    "title": "Course: Courseware Engineering (DEP3063)",
+    "url": "http://localhost:8000/course/DEP3063",
+    "content": "Syllabus for DEP3063. Covers Agile Methodology, Waterfall Model, and Android App Development for education."
+  },
+  {
+    "title": "Course: Software Project Management (DEQ3063)",
+    "url": "http://localhost:8000/course/DEQ3063",
+    "content": "Syllabus for DEQ3063. Covers Gantt Charts, Risk Management, COCOMO estimation, and Jira tracking."
+  },
+  {
+    "title": "Course: Configuration Management (DEQ3093)",
+    "url": "http://localhost:8000/course/DEQ3093",
+    "content": "Syllabus for DEQ3093. Covers Git Version Control, CI/CD Pipelines, and Change Control Boards."
+  },
+  {
+    "title": "Course: Software Design (DES3043)",
+    "url": "http://localhost:8000/course/DES3043",
+    "content": "Syllabus for DES3043. Covers Microservices, Design Patterns, RESTful API Design, and Software Architecture."
+  },
+  {
+    "title": "Course: Requirements Engineering (DES3023)",
+    "url": "http://localhost:8000/course/DES3023",
+    "content": "Syllabus for DES3023. Covers UML Modeling, SRS Documentation, and Requirements Elicitation techniques."
+  },
+  {
+    "title": "Course: Software Engineering Principles (DES3013)",
+    "url": "http://localhost:8000/course/DES3013",
+    "content": "Syllabus for DES3013. Introduction to SDLC, Waterfall vs Agile, and basic UML diagrams."
+  },
+  {
+    "title": "Course: Software Project (DES3073)",
+    "url": "http://localhost:8000/course/DES3073",
+    "content": "Syllabus for DES3073. Capstone project course involving Full-Stack Development, Laravel, and Defensive Programming."
+  },
+  {
+    "title": "Course: Testing & Quality (DES3053)",
+    "url": "http://localhost:8000/course/DES3053",
+    "content": "Syllabus for DES3053. Covers Black-box testing, White-box testing, Selenium automation, and Unit Testing."
+  },
+  {
+    "title": "Course: Software Processes (DES3083)",
+    "url": "http://localhost:8000/course/DES3083",
+    "content": "Syllabus for DES3083. Deep dive into Scrum, Kanban, XP, and Software Process Improvement (SPI)."
+  },
+  {
+    "title": "Course: Validation & Verification (DES3103)",
+    "url": "http://localhost:8000/course/DES3103",
+    "content": "Syllabus for DES3103. Covers IEEE Standards, Code Inspections, and CMM Maturity Models."
+  },
+  {
+    "title": "Course: Mobile App Dev (DES3113)",
+    "url": "http://localhost:8000/course/DES3113",
+    "content": "Syllabus for DES3113. Focuses on Flutter, Dart, Firebase integration, and Widget lifecycles."
+  },
+  {
+    "title": "Course: Computer Networks (DTN3023)",
+    "url": "http://localhost:8000/course/DTN3023",
+    "content": "Syllabus for DTN3023. Covers OSI Model, TCP/IP, Packet Tracer, and IP Addressing."
+  },
+  {
+    "title": "Course: Operating Systems (DTN3043)",
+    "url": "http://localhost:8000/course/DTN3043",
+    "content": "Syllabus for DTN3043. Covers Process Management, Memory Paging, Deadlocks, and Linux Command Line."
+  },
+  {
+    "title": "Course: Structured Programming (DTS3013)",
+    "url": "http://localhost:8000/course/DTS3013",
+    "content": "Syllabus for DTS3013. Introduction to C++, Pointers, Arrays, and Algorithm Logic."
+  },
+  {
+    "title": "Course: Object Oriented Programming (DTS3093)",
+    "url": "http://localhost:8000/course/DTS3093",
+    "content": "Syllabus for DTS3093. Covers Java, Polymorphism, Inheritance, and Encapsulation."
+  },
+  {
+    "title": "Career: Frontend Engineer",
+    "url": "http://localhost:8000/career/frontend-engineer",
+    "content": "Career path focusing on Vue.js, React, CSS3, Accessibility, and Responsive Design."
+  },
+  {
+    "title": "Career: Backend Architect",
+    "url": "http://localhost:8000/career/backend-architect",
+    "content": "Career path focusing on Database Design, Microservices, API Development, and Cloud Scaling."
+  },
+  {
+    "title": "Career: DevOps Specialist",
+    "url": "http://localhost:8000/career/devops",
+    "content": "Career path focusing on CI/CD, Docker, Kubernetes, AWS, and Infrastructure as Code."
+  },
+  {
+    "title": "Career: Mobile Developer",
+    "url": "http://localhost:8000/career/mobile-dev",
+    "content": "Career path focusing on Flutter, React Native, iOS, Android, and mobile UI paradigms."
+  },
+  {
+    "title": "Career: Data Scientist",
+    "url": "http://localhost:8000/career/data-scientist",
+    "content": "Career path focusing on Python, Pandas, Machine Learning, and Statistical Analysis."
+  },
+  {
+    "title": "Skill: Vue.js",
+    "url": "http://localhost:8000/skills/vue",
+    "content": "Resource page for Vue.js. Learn Composition API, Pinia State Management, and Vite."
+  },
+  {
+    "title": "Skill: Laravel",
+    "url": "http://localhost:8000/skills/laravel",
+    "content": "Resource page for Laravel. Learn Eloquent ORM, Blade Templating, and Sanctum Authentication."
+  },
+  {
+    "title": "Skill: Python",
+    "url": "http://localhost:8000/skills/python",
+    "content": "Resource page for Python. Learn syntax, data structures, and automation scripts."
+  },
+  {
+    "title": "Skill: SQL",
+    "url": "http://localhost:8000/skills/sql",
+    "content": "Resource page for SQL. Learn relational databases, joins, normalization, and stored procedures."
+  },
+  {
+    "title": "Skill: Git",
+    "url": "http://localhost:8000/skills/git",
+    "content": "Resource page for Git. Learn branching, merging, pull requests, and version control best practices."
+  },
+  {
+    "title": "Skill: Docker",
+    "url": "http://localhost:8000/skills/docker",
+    "content": "Resource page for Docker. Learn containerization, Dockerfiles, and Docker Compose."
+  },
+  {
+    "title": "Skill: Figma",
+    "url": "http://localhost:8000/skills/figma",
+    "content": "Resource page for Figma. Learn UI prototyping, design systems, and wireframing."
+  },
+  {
+    "title": "Skill: Agile/Scrum",
+    "url": "http://localhost:8000/skills/agile",
+    "content": "Resource page for Agile. Learn Sprint planning, Stand-ups, and Project Management."
+  },
+  {
+    "title": "Skill: Testing (QA)",
+    "url": "http://localhost:8000/skills/qa",
+    "content": "Resource page for Software Testing. Learn Unit Tests, Integration Tests, and TDD."
+  },
+  {
+    "title": "Skill: Networking",
+    "url": "http://localhost:8000/skills/networking",
+    "content": "Resource page for Computer Networks. Learn TCP/IP, DNS, HTTP, and Security."
+  },
+  {
+    "title": "Roadmap Phase: Foundation",
+    "url": "http://localhost:8000/roadmap/phase/1",
+    "content": "The starting phase of most roadmaps. Focuses on setting up environments and learning basic syntax."
+  },
+  {
+    "title": "Roadmap Phase: Core Logic",
+    "url": "http://localhost:8000/roadmap/phase/2",
+    "content": "The second phase of roadmaps. Focuses on algorithms, data structures, and problem-solving."
+  },
+  {
+    "title": "Roadmap Phase: Frameworks",
+    "url": "http://localhost:8000/roadmap/phase/3",
+    "content": "The intermediate phase. Focuses on modern tools like Vue, React, Laravel, or Django."
+  },
+  {
+    "title": "Roadmap Phase: Deployment",
+    "url": "http://localhost:8000/roadmap/phase/4",
+    "content": "The advanced phase. Focuses on cloud hosting, CI/CD pipelines, and production security."
+  },
+  {
+    "title": "Roadmap Phase: Capstone",
+    "url": "http://localhost:8000/roadmap/phase/5",
+    "content": "The final phase. Focuses on building a complete portfolio project to demonstrate mastery."
+  },
+  {
+    "title": "Blog: How to Start Coding",
+    "url": "http://localhost:8000/blog/start-coding",
+    "content": "A guide for beginners on choosing a language and setting up an IDE."
+  },
+  {
+    "title": "Blog: Top 5 Frameworks 2026",
+    "url": "http://localhost:8000/blog/top-frameworks",
+    "content": "Analysis of the most popular web frameworks including Vue 3 and Next.js."
+  },
+  {
+    "title": "Blog: Why Learn Laravel?",
+    "url": "http://localhost:8000/blog/why-laravel",
+    "content": "Article explaining the benefits of Laravel's ecosystem for PHP developers."
+  },
+  {
+    "title": "Blog: AI in Education",
+    "url": "http://localhost:8000/blog/ai-education",
+    "content": "How DevNexus uses LLMs to personalize learning experiences for students."
+  },
+  {
+    "title": "Blog: Mastering CSS Grid",
+    "url": "http://localhost:8000/blog/css-grid",
+    "content": "Tutorial on building complex layouts using modern CSS Grid techniques."
+  },
+  {
+    "title": "FAQ: Password Reset",
+    "url": "http://localhost:8000/faq/password-reset",
+    "content": "Instructions on how to reset your password if you are locked out."
+  },
+  {
+    "title": "FAQ: Delete Account",
+    "url": "http://localhost:8000/faq/delete-account",
+    "content": "Procedure for permanently deleting your DevNexus account and data."
+  },
+  {
+    "title": "FAQ: Academic Credits",
+    "url": "http://localhost:8000/faq/academic-credits",
+    "content": "Information on how DevNexus roadmaps align with university credit hours."
+  },
+  {
+    "title": "Feature: PDF Export",
+    "url": "http://localhost:8000/features/export",
+    "content": "DevNexus allows you to export your completed roadmaps as PDF certificates."
+  },
+  {
+    "title": "Feature: Dark Mode",
+    "url": "http://localhost:8000/features/dark-mode",
+    "content": "How to toggle the interface between Light and Dark Teal themes."
+  },
+  {
+    "title": "Admin: User Management",
+    "url": "http://localhost:8000/admin/users",
+    "content": "Admin panel for managing registered students and system access."
+  },
+  {
+    "title": "Admin: System Health",
+    "url": "http://localhost:8000/admin/health",
+    "content": "Admin dashboard showing AI model status (Ollama) and API latency."
+  },
+  {
+    "title": "Skill: Java",
+    "url": "http://localhost:8000/skills/java",
+    "content": "Resource page for Java. Learn OOP principles, Spring Boot, and JVM internals."
+  },
+  {
+    "title": "Skill: C++",
+    "url": "http://localhost:8000/skills/cpp",
+    "content": "Resource page for C++. Learn memory management, pointers, and game dev basics."
+  },
+  {
+    "title": "Skill: Flutter",
+    "url": "http://localhost:8000/skills/flutter",
+    "content": "Resource page for Flutter. Learn cross-platform mobile development with Dart."
+  },
+  {
+    "title": "Skill: Linux",
+    "url": "http://localhost:8000/skills/linux",
+    "content": "Resource page for Linux. Learn bash scripting, file permissions, and server management."
+  },
+  {
+    "title": "Skill: Jira",
+    "url": "http://localhost:8000/skills/jira",
+    "content": "Resource page for Jira. Learn project tracking, kanban boards, and issue management."
+  },
+  {
+    "title": "Skill: AWS",
+    "url": "http://localhost:8000/skills/aws",
+    "content": "Resource page for AWS. Learn EC2, S3, Lambda, and cloud architecture."
+  },
+  {
+    "title": "Skill: Machine Learning",
+    "url": "http://localhost:8000/skills/ml",
+    "content": "Resource page for ML. Learn model training, datasets, and Scikit-Learn."
+  },
+  {
+    "title": "Skill: Cybersecurity",
+    "url": "http://localhost:8000/skills/cybersecurity",
+    "content": "Resource page for Security. Learn penetration testing, encryption, and network defense."
+  },
+  {
+    "title": "Career: Full Stack Developer",
+    "url": "http://localhost:8000/career/full-stack",
+    "content": "Career path combining frontend and backend skills for complete application building."
+  },
+  {
+    "title": "Career: QA Engineer",
+    "url": "http://localhost:8000/career/qa-engineer",
+    "content": "Career path focusing on automated testing, bug tracking, and software quality."
+  },
+  {
+    "title": "Career: Cloud Architect",
+    "url": "http://localhost:8000/career/cloud-architect",
+    "content": "Career path focusing on designing scalable systems on AWS, Azure, or GCP."
+  },
+  {
+    "title": "Career: UI/UX Designer",
+    "url": "http://localhost:8000/career/ui-ux",
+    "content": "Career path focusing on user research, wireframing, and visual design."
+  },
+  {
+    "title": "Resource: API Documentation",
+    "url": "http://localhost:8000/docs/api",
+    "content": "Technical documentation for the DevNexus public API endpoints."
+  },
+  {
+    "title": "Resource: Community Forum",
+    "url": "http://localhost:8000/community",
+    "content": "A place for students to discuss coursework and share roadmap progress."
+  },
+  {
+    "title": "Resource: Student Handbook",
+    "url": "http://localhost:8000/resources/handbook",
+    "content": "Official guide to academic regulations and grading scales."
+  },
+  {
+    "title": "Event: Hackathon 2026",
+    "url": "http://localhost:8000/events/hackathon",
+    "content": "Registration for the annual DevNexus coding competition."
+  },
+  {
+    "title": "Event: Career Fair",
+    "url": "http://localhost:8000/events/career-fair",
+    "content": "Information about upcoming networking opportunities with tech companies."
+  },
+  {
+    "title": "Settings: Notifications",
+    "url": "http://localhost:8000/student/profile/notifications",
+    "content": "Manage email and push notification preferences for roadmap updates."
+  },
+  {
+    "title": "Settings: Privacy",
+    "url": "http://localhost:8000/student/profile/privacy",
+    "content": "Control visibility of your profile and roadmaps to other students."
+  },
+  {
+    "title": "Tool: Resume Builder",
+    "url": "http://localhost:8000/tools/resume",
+    "content": "A tool to generate a tech-focused resume based on your completed roadmaps."
+  },
+  {
+    "title": "Tool: Interview Prep",
+    "url": "http://localhost:8000/tools/interview",
+    "content": "AI-driven mock interview questions for your target career role."
+  },
+  {
+    "title": "Support: Contact Us",
+    "url": "http://localhost:8000/support/contact",
+    "content": "Form to reach the DevNexus support team for technical issues."
+  },
+  {
+    "title": "Support: Report Bug",
+    "url": "http://localhost:8000/support/bug-report",
+    "content": "Submit details about software errors or glitches found in the system."
+  },
+  {
+    "title": "Legal: Cookie Policy",
+    "url": "http://localhost:8000/legal/cookies",
+    "content": "Explanation of how DevNexus uses cookies for session management and analytics."
+  },
+  {
+    "title": "Legal: GDPR Compliance",
+    "url": "http://localhost:8000/legal/gdpr",
+    "content": "Information on data protection rights for users within the EU."
+  },
+  {
+    "title": "About Us",
+    "url": "http://localhost:8000/about",
+    "content": "The story behind DevNexus and its mission to bridge the gap between academia and industry."
+  },
+  {
+    "title": "Team",
+    "url": "http://localhost:8000/team",
+    "content": "Meet the developers and educators behind the DevNexus platform."
+  },
+  {
+    "title": "Skill: React.js",
+    "url": "http://localhost:8000/skills/react",
+    "content": "Resource page for React. Learn JSX, Hooks, and Redux."
+  },
+  {
+    "title": "Skill: Node.js",
+    "url": "http://localhost:8000/skills/node",
+    "content": "Resource page for Node.js. Learn Express, event loops, and backend JavaScript."
+  },
+  {
+    "title": "Skill: TypeScript",
+    "url": "http://localhost:8000/skills/typescript",
+    "content": "Resource page for TypeScript. Learn static typing and interfaces for JS."
+  },
+  {
+    "title": "Skill: MongoDB",
+    "url": "http://localhost:8000/skills/mongo",
+    "content": "Resource page for MongoDB. Learn NoSQL document storage and aggregation."
+  },
+  {
+    "title": "Skill: Redis",
+    "url": "http://localhost:8000/skills/redis",
+    "content": "Resource page for Redis. Learn in-memory caching and key-value stores."
+  },
+  {
+    "title": "Skill: GraphQL",
+    "url": "http://localhost:8000/skills/graphql",
+    "content": "Resource page for GraphQL. Learn flexible API querying and schemas."
+  },
+  {
+    "title": "Skill: Kubernetes",
+    "url": "http://localhost:8000/skills/kubernetes",
+    "content": "Resource page for K8s. Learn container orchestration and scaling."
+  },
+  {
+    "title": "Skill: CI/CD",
+    "url": "http://localhost:8000/skills/cicd",
+    "content": "Resource page for CI/CD. Learn GitHub Actions, Jenkins, and automated deployment."
+  },
+  {
+    "title": "Course: Internet of Things (DTN3053)",
+    "url": "http://localhost:8000/course/DTN3053",
+    "content": "Syllabus for IoT. Covers sensors, actuators, and Raspberry Pi programming."
+  },
+  {
+    "title": "Course: Data Mining (DEK3043)",
+    "url": "http://localhost:8000/course/DEK3043",
+    "content": "Syllabus for Data Mining. Covers clustering, classification, and big data analysis."
+  },
+  {
+    "title": "Course: Cyber Law (DES3123)",
+    "url": "http://localhost:8000/course/DES3123",
+    "content": "Syllabus for Cyber Law. Covers ethics, digital rights, and computer crime legislation."
+  }
+]
