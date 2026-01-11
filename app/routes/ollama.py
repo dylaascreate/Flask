@@ -31,57 +31,74 @@ def generate():
 
 @ollama_bp.route('/career-recommend', methods=['POST'])
 def recommend_career():
-    # 1. Get Data
+    # ... (Previous code for getting data remains the same) ...
     data = request.json
     user_skills = data.get('skills', []) 
 
     if not user_skills:
         return jsonify({"error": "No skills provided for analysis"}), 400
 
-    # 2. Format Skills for the Prompt
-    formatted_skills = ", ".join([f"{s['name']} ({s['level']})" for s in user_skills])
+    # Format skills for the prompt
+    formatted_skills = ", ".join([
+        s.get('name', str(s)) if isinstance(s, dict) else str(s) 
+        for s in user_skills
+    ])
 
-    # 3. Construct the Prompt for Top 3
+    # --- UPDATED PROMPT ---
     prompt = f"""
-    Act as a Senior Technical Recruiter. 
-    Analyze the following candidate profile based on their skills:
-    
-    Candidate Skills: {formatted_skills}
+    Act as a Senior Technical Recruiter with strict, quantitative evaluation standards.
 
-    Task: 
-    Recommend the TOP 3 tech career paths for this candidate, ranked by compatibility (Highest to Lowest).
+    Analyze the following candidate profile:
 
-    STRICT JSON OUTPUT REQUIRED. NO MARKDOWN.
-    Return a single JSON object with a "recommendations" array containing exactly 3 objects:
+    Candidate Skills:
+    {formatted_skills}
+
+    TASKS:
+    1. Recommend the TOP 3 tech career paths (Ranked 1–3).
+    2. For EACH career path:
+    - Define at least 10 REQUIRED skills that are industry-standard for that role.
+    - Categorize them strictly into:
+        a) "matched_skills" → skills explicitly present in the candidate profile
+        b) "missing_skills" → required skills NOT present in the candidate profile
+    3. Calculate a compatibility_score (0–100) using the rules below.
+    4. Provide ONE concise "Neural Advice" sentence focused on the single highest-impact missing skill.
+
+    SCORING RULES (MANDATORY):
+    - Start from 100
+    - Subtract 8 points for EACH missing CORE skill
+    - Subtract 4 points for EACH missing SECONDARY skill
+    - If MORE THAN 30% of required skills are missing → compatibility_score MUST NOT exceed 75
+    - If MORE THAN 50% of required skills are missing → compatibility_score MUST NOT exceed 60
+    - Scores above 85 are ONLY allowed if ALL core skills are matched
+
+    STRICT OUTPUT RULES:
+    - Output VALID JSON ONLY
+    - NO markdown
+    - NO explanations outside JSON
+    - Ensure compatibility_score numerically matches the skill gaps listed
+
+    OUTPUT FORMAT:
     {{
-        "recommendations": [
-            {{
-                "rank": 1,
-                "career_title": "String",
-                "compatibility_score": "Inn Percentage (0-100)",
-                "reasoning": "String (Brief explanation)",
-                "matched_skills": [ {{ "name": "String", "level": "String" }} ],
-                "missing_skills": ["String", "String"]
-            }},
-            {{
-                "rank": 2,
-                ...
-            }},
-            {{
-                "rank": 3,
-                ...
-            }}
-        ]
+    "global_advice": "String",
+    "recommendations": [
+        {{
+        "rank": 1,
+        "career_title": "String",
+        "compatibility_score": 0,
+        "reasoning": "Brief, factual explanation tied directly to matched vs missing skills",
+        "matched_skills": ["String"],
+        "missing_skills": ["String"]
+        }}
+    ]
     }}
     """
 
-    # 4. Call AI Service
+    # ... (Rest of the function remains the same) ...
     ai_response = query_ollama(prompt, json_mode=True)
-
+    
     if not ai_response:
         return jsonify({"error": "AI failed to generate recommendation"}), 500
 
-    # 5. Parse & Return
     try:
         result_json = json.loads(ai_response)
         return jsonify({
@@ -91,10 +108,9 @@ def recommend_career():
     except json.JSONDecodeError:
         return jsonify({
             "status": "error",
-            "message": "AI returned invalid JSON format",
-            "raw_response": ai_response
+            "message": "AI returned invalid JSON format"
         }), 500
-    
+                   
 # ======================================================
 # 3. SYNC WEBSITE DATA (Writes to Disk & Global Memory)
 # ======================================================
@@ -132,7 +148,6 @@ def sync_website_data():
     except Exception as e:
         print(f" [ERROR] Failed to save website context: {e}")
         return jsonify({"error": "Failed to save data"}), 500
-
 
 # ======================================================
 # 4. WEBSITE CHATBOT (Uses Global Memory)
@@ -205,7 +220,6 @@ def website_chat():
 # ======================================================
 @ollama_bp.route('/score-cv', methods=['POST'])
 def score_cv():
-    # ... (Logic remains identical, omitted for brevity if no global data used) ...
     # 1. Check for File
     if 'cv_file' not in request.files:
         return jsonify({"error": "No file uploaded"}), 400
@@ -234,7 +248,10 @@ def score_cv():
         print(f" [ERROR] File extraction failed: {e}")
         return jsonify({"error": "Failed to read document text"}), 500
 
-    if len(cv_text.strip()) < 50:
+    # [Improvement] Sanitize text to remove excessive whitespace/noise
+    clean_cv_text = " ".join(cv_text.split())
+    
+    if len(clean_cv_text) < 50:
         return jsonify({"error": "CV text is too short or unreadable."}), 400
 
     # 3. Build ATS Prompt
@@ -242,7 +259,7 @@ def score_cv():
     Act as an advanced ATS. Compare Candidate Resume against Job Description.
 
     JOB DESCRIPTION: "{job_description}"
-    CANDIDATE RESUME: "{cv_text}"
+    CANDIDATE RESUME: "{clean_cv_text}"
 
     STRICT JSON OUTPUT FORMAT:
     {{
@@ -264,8 +281,7 @@ def score_cv():
         result_json = json.loads(response_text)
         return jsonify({"status": "success", "data": result_json})
     except json.JSONDecodeError:
-        return jsonify({"status": "error", "message": "AI returned invalid JSON"}), 500
-        
+        return jsonify({"status": "error", "message": "AI returned invalid JSON"}), 500      
 # ======================================================
 # 6. SKILL EXPANDER
 # ======================================================
@@ -405,41 +421,70 @@ def grade_quiz():
     results = []
     wrong_topics = []
 
+    # Helper to convert "Option A", "A.", "A)" into index 0
     def get_option_index(choice_str):
         if not choice_str: return -1
-        clean = choice_str.upper().replace("OPTION", "").strip()
+        clean = str(choice_str).upper().replace("OPTION", "").strip()
+        # Handle "A: Text", "A. Text", "A) Text"
+        if len(clean) > 1 and clean[1] in [':', '.', ')']:
+             clean = clean[0]
         mapping = {'A': 0, 'B': 1, 'C': 2, 'D': 3}
         return mapping.get(clean, -1)
 
     for q in original_quiz:
         q_id = str(q.get('id'))
-        correct_answer_text = q.get('answer')
-        options_list = q.get('options', [])
-        user_selection_label = user_answers.get(q_id) 
+        correct_answer_raw = q.get('answer', '') # e.g. "Option A" OR "Option A: Docker"
+        options_list = q.get('options', [])      # e.g. ["Docker", "Kubernetes", ...]
+        user_selection = user_answers.get(q_id, "") # e.g. "Docker"
         
-        idx = get_option_index(user_selection_label)
-        user_selected_text = options_list[idx] if 0 <= idx < len(options_list) else user_selection_label
+        # --- LOGIC FIX START ---
+        
+        # 1. Determine the CORRECT TEXT from the Options List
+        # If AI said "Option A", we grab options_list[0] ("Docker")
+        correct_idx = get_option_index(correct_answer_raw)
+        if 0 <= correct_idx < len(options_list):
+            correct_text_normalized = options_list[correct_idx].strip().lower()
+        else:
+            # Fallback: Use the raw string if we can't map it to an index
+            correct_text_normalized = str(correct_answer_raw).strip().lower()
 
-        is_correct = (str(user_selected_text).strip() == str(correct_answer_text).strip())
+        # 2. Determine the USER TEXT
+        # Usually exact text, but we check if they somehow sent "Option A"
+        user_idx = get_option_index(user_selection)
+        if 0 <= user_idx < len(options_list):
+            user_text_normalized = options_list[user_idx].strip().lower()
+        else:
+            user_text_normalized = str(user_selection).strip().lower()
+
+        # 3. Compare the Actual Texts
+        is_correct = (user_text_normalized == correct_text_normalized)
+
+        # 4. Backup Loose Match (for punctuation/casing differences)
+        if not is_correct and user_text_normalized and correct_text_normalized:
+            if user_text_normalized in correct_text_normalized or correct_text_normalized in user_text_normalized:
+                is_correct = True
         
+        # --- LOGIC FIX END ---
+
         if is_correct:
             score += 1
         else:
-            wrong_topics.append(f"Q: {q.get('question')} | Correct: {correct_answer_text}")
+            wrong_topics.append(f"Q: {q.get('question')} | Correct: {correct_answer_raw}")
 
         results.append({
             "id": q.get('id'),
             "is_correct": is_correct,
-            "user_choice": user_selection_label,
+            "user_choice": user_selection,
             "explanation": q.get('explanation')
         })
 
-    percentage = round((score / total) * 100, 2)
+    # AI Feedback Logic
+    percentage = round((score / total) * 100, 2) if total > 0 else 0
     ai_feedback = "Great job!"
     
     if wrong_topics:
         try:
-            feedback_prompt = f"Student errors: {json.dumps(wrong_topics)}. Give 2 sentence advice."
+            feedback_prompt = f"Student errors: {json.dumps(wrong_topics)}. Give 1 sentence advice."
             ai_feedback = query_ollama(feedback_prompt, json_mode=False)
         except:
             ai_feedback = "Review the explanations below."
@@ -451,4 +496,57 @@ def grade_quiz():
         "percentage": f"{percentage}%",
         "feedback_summary": ai_feedback,
         "detailed_results": results
-    })
+    })  
+
+# ======================================================
+# 9. CAREER SKILL SUGGESTION (New)
+# ======================================================
+@ollama_bp.route('/suggest-skills-by-career', methods=['POST'])
+def suggest_skills_by_career():
+    """
+    Suggests technical and soft skills based on a target career title.
+    """
+    data = request.json
+    target_career = data.get('career')
+    level = data.get('level', 'Entry-Level') # e.g. Entry-Level, Senior, Lead
+
+    if not target_career:
+        return jsonify({"error": "Target career is required"}), 400
+
+    # 1. Construct Prompt
+    prompt = f"""
+    Act as a Senior Career Coach and Technical Recruiter.
+    The user wants to become a: "{target_career}" ({level}).
+
+    Task: List the top essential skills required for this role in the current job market.
+
+    STRICT JSON OUTPUT FORMAT (No Markdown):
+    {{
+        "technical_skills": ["Tech Skill 1", "Tech Skill 2", "Tech Skill 3", ...],
+        "soft_skills": ["Soft Skill 1", "Soft Skill 2", ...],
+        "tools_and_platforms": ["Tool 1", "Tool 2", ...],
+        "reasoning": "Brief explanation of why these skills are critical for {target_career}."
+    }}
+    """
+
+    # 2. Call AI
+    response_text = query_ollama(prompt, json_mode=True)
+
+    if not response_text:
+        return jsonify({"error": "AI service failed to generate suggestions"}), 500
+
+    # 3. Parse & Return
+    try:
+        result_json = json.loads(response_text)
+        return jsonify({
+            "status": "success",
+            "career": target_career,
+            "level": level,
+            "data": result_json
+        })
+    except json.JSONDecodeError:
+        return jsonify({
+            "status": "error", 
+            "message": "AI returned invalid JSON", 
+            "raw": response_text
+        }), 500

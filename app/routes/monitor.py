@@ -146,6 +146,11 @@ def system_health():
             "latency": f"{course_db_latency}ms", 
             "dependencies": ["DevNexus Model", "Course DB"]
         },
+        "course_recommender": {
+            "status": "operational" if (is_model_ok and is_db_ok) else "degraded",
+            "latency": f"{course_db_latency}ms", 
+            "dependencies": ["DevNexus Model", "Course DB"]
+        },
         "cv_ats_scorer": {
             "status": "operational" if is_ollama_ok else "outage",
             "latency": f"{ollama_latency}ms",
